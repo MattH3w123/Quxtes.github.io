@@ -1,3 +1,16 @@
+const body = document.querySelector('body');
+const Changee = document.getElementById('change');
+
+    const colorchanger = () => {
+        if(body.getAttribute('data-mode') === 'two') {
+            body.setAttribute('data-mode', 'one')
+        } else {
+            body.setAttribute('data-mode', 'two')
+        }
+    };
+
+    Changee.addEventListener('click', colorchanger);
+
 function changeColor(button) {
     
     if (button.classList.contains("red-heart")) {
@@ -35,6 +48,7 @@ SeeMore.onclick = async () => {
         <hr class="hrr">
         <div class="btnn">
           <ul>
+            <li class="speak"><i class="fa-solid fa-volume-high"></i></li>
             <li class="copy"><i class="fa-solid fa-copy"></i></li>
           </ul>
           <button class="bttn red-heart" onclick="changeColor(this)"><i class="fa-solid fa-heart"></i></button>
@@ -46,7 +60,6 @@ SeeMore.onclick = async () => {
     QuoteContentArea.appendChild(newQuoteBox);
   }
   quotebox += 3;
-
   
   const copyButtons = document.querySelectorAll(".copy");
   copyButtons.forEach(copyButton => {
@@ -55,4 +68,101 @@ SeeMore.onclick = async () => {
       await navigator.clipboard.writeText(quoteText);
     });
   });
+
+  const soundIcons = document.querySelectorAll(".speak");
+  const clickDelay = 3000; 
+
+  function handleVoicesChanged() {
+    let availableVoices = speechSynthesis.getVoices();
+    return availableVoices.find(voice => voice.lang === 'en' || voice.lang === 'en-US');
+  }
+
+  speechSynthesis.addEventListener('voiceschanged', () => {
+    soundIcons.forEach(soundIcon => {
+      soundIcon.disabled = false; 
+    });
+  });
+
+  soundIcons.forEach(soundIcon => {
+    soundIcon.addEventListener("click", () => {
+      if (!soundIcon.disabled) {
+        soundIcon.disabled = true; 
+        soundIcon.style.opacity = 0.9; 
+        soundIcon.style.backgroundColor = "rgba(51, 51, 50)"; 
+
+        let quoteText = soundIcon.closest(".quote-text-content").querySelector(".quote-text").innerText;
+        let utter = new SpeechSynthesisUtterance(quoteText);
+
+        let englishVoice = handleVoicesChanged();
+
+        if (englishVoice) {
+          utter.voice = englishVoice;
+          speechSynthesis.defaultVoice = englishVoice;
+          speechSynthesis.speak(utter);
+        } else {
+          console.log("Brak dostępnego głosu w języku angielskim.");
+        }
+
+        
+        setTimeout(() => {
+          soundIcon.disabled = false;
+          soundIcon.style.opacity = 1; 
+          soundIcon.style.backgroundColor = ""; 
+        }, clickDelay);
+      }
+    });
+  });
+
 };
+
+const copyButtons = document.querySelectorAll(".copy");
+  copyButtons.forEach(copyButton => {
+    copyButton.addEventListener("click", async () => {
+      const quoteText = copyButton.closest(".quote-text-content").querySelector(".quote-text").innerText;
+      await navigator.clipboard.writeText(quoteText);
+    });
+  });
+
+const soundIcons = document.querySelectorAll(".speak");
+const clickDelay = 5000; 
+
+function handleVoicesChanged() {
+  let availableVoices = speechSynthesis.getVoices();
+  return availableVoices.find(voice => voice.lang === 'en' || voice.lang === 'en-US');
+}
+
+speechSynthesis.addEventListener('voiceschanged', () => {
+  soundIcons.forEach(soundIcon => {
+    soundIcon.disabled = false;
+  });
+});
+
+soundIcons.forEach(soundIcon => {
+  soundIcon.addEventListener("click", () => {
+    if (!soundIcon.disabled) {
+      soundIcon.disabled = true; 
+      soundIcon.style.opacity = 0.9; 
+      soundIcon.style.backgroundColor = "rgba(51, 51, 50)"; 
+
+      let quoteText = soundIcon.closest(".quote-text-content").querySelector(".quote-text").innerText;
+      let utter = new SpeechSynthesisUtterance(quoteText);
+
+      let englishVoice = handleVoicesChanged();
+
+      if (englishVoice) {
+        utter.voice = englishVoice;
+        speechSynthesis.defaultVoice = englishVoice;
+        speechSynthesis.speak(utter);
+      } else {
+        console.log("Brak dostępnego głosu w języku angielskim.");
+      }
+
+      setTimeout(() => {
+        soundIcon.disabled = false;
+        soundIcon.style.opacity = 1; 
+        soundIcon.style.backgroundColor = ""; 
+      }, clickDelay);
+    }
+  });
+});
+
