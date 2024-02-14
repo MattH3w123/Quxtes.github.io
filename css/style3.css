@@ -284,6 +284,9 @@ section#home {
     font-weight: 900;
 }
 
+.speak, .copy {
+    display: none;
+}
 
 .btnn {
     display: flex;

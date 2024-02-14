@@ -66,7 +66,11 @@ SeeMore.onclick = async () => {
     QuoteContentArea.appendChild(newQuoteBox);
   }
   quotebox += 3;
-  
+
+  document.querySelectorAll('.speak, .copy').forEach(function(el) {
+    el.style.display = 'flex';
+  });
+
   const copyButtons = document.querySelectorAll(".copy");
   copyButtons.forEach(copyButton => {
     copyButton.addEventListener("click", async () => {
@@ -168,60 +172,6 @@ SeeMore.onclick = async () => {
   initSpeech();
 };
 
-const copyButtons = document.querySelectorAll(".copy");
-  copyButtons.forEach(copyButton => {
-    copyButton.addEventListener("click", async () => {
-      const quoteText = copyButton.closest(".quote-text-content").querySelector(".quote-text").innerText;
-      await navigator.clipboard.writeText(quoteText);
-    });
-  });
 
-  const soundIcons = document.querySelectorAll(".speak");
-  const clickDelay = 3000;
 
-    function handleVoicesChanged() {
-      return new Promise(resolve => {
-        let voices = speechSynthesis.getVoices();
-        if (voices.length) {
-          resolve(voices.find(voice => voice.lang !== 'pl-PL' && voice.lang.startsWith('en')));
-        } else {
-          speechSynthesis.onvoiceschanged = () => {
-            voices = speechSynthesis.getVoices();
-            resolve(voices.find(voice => voice.lang !== 'pl-PL' && voice.lang.startsWith('en')));
-          };
-        }
-      });
-    }
-
-  async function initSpeech() {
-  const englishVoice = await handleVoicesChanged();
-
-    soundIcons.forEach(soundIcon => {
-      soundIcon.addEventListener("click", async () => {
-        if (!soundIcon.disabled) {
-          soundIcon.disabled = true;
-          soundIcon.style.opacity = 0.9;
-          soundIcon.style.backgroundColor = "rgba(51, 51, 50)";
-
-          let quoteText = soundIcon.closest(".quote-text-content").querySelector(".quote-text").innerText;
-          let utter = new SpeechSynthesisUtterance(quoteText);
-
-          if (englishVoice) {
-            utter.voice = englishVoice;
-            speechSynthesis.speak(utter);
-          } else {
-            console.log("Brak dostępnego głosu w języku polskim.");
-          }
-
-          setTimeout(() => {
-            soundIcon.disabled = false;
-            soundIcon.style.opacity = 1;
-            soundIcon.style.backgroundColor = "";
-          }, clickDelay);
-        }
-      });
-    });
-  }
-
-initSpeech();
-
+  

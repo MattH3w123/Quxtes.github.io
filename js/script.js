@@ -34,18 +34,22 @@ let quotebox = 3;
 
 SeeMore.onclick = () => {
   let boxes = [...document.querySelectorAll('.qt-content-area .qt-content .qot')];
-  for (var i = quotebox; i < quotebox + 3; i++) {
+  for (let i = quotebox; i < quotebox + 3 && i < boxes.length; i++) {
     boxes[i].style.display = "inline-flex";
-  };
+  }
 
   quotebox += 3;
 
-  const copyButto = document.querySelectorAll(".copy");
-  copyButto.forEach(copyButton => {
+  const copyButtons = document.querySelectorAll(".copy");
+  copyButtons.forEach(copyButton => {
     copyButton.addEventListener("click", async () => {
       const quoteText = copyButton.closest(".quote-text-content").querySelector(".quote-text").innerText;
       await navigator.clipboard.writeText(quoteText);
     });
+  });
+
+  document.querySelectorAll('.copy').forEach(copyButton => {
+    copyButton.style.display = 'flex';
   });
 };
   
