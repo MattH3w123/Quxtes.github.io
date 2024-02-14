@@ -13,10 +13,11 @@ html {
     --header-bk-cl: rgb(24, 24, 24);
     --header-text-cl: white;
     --main-bk-cl: #121212 ;
-    --guote-bk-col: #a8a8a8;
+    --guote-bk-col: #b4b4b4;
     --see-more-button: rgb(255, 255, 255);
     --social-i-cl: rgb(255, 255, 255);
-    --social-color-hover: rgb(102, 102, 102);
+    --social-color-hover: rgb(196, 196, 196);
+    --box-shadow-cl: rgb(0, 0, 0);
 }
 
 [data-mode="one"] {
@@ -28,6 +29,7 @@ html {
     --see-more-button: rgba(0, 0, 0, 1);
     --social-i-cl: rgb(0, 0, 0);
     --social-color-hover: rgb(255, 255, 255);
+    --box-shadow-cl: rgb(32, 32, 32);
 }
 
 body {
@@ -228,9 +230,7 @@ section#home {
     gap: 14px;
     border-radius: 30px;
     border: 1px solid rgba(29, 29, 33, 1);
-    -webkit-box-shadow: 0px 4px 18px 0px rgba(29, 29, 33, 1);
-    -moz-box-shadow: 0px 4px 18px 0px rgba(29, 29, 33, 1);
-    box-shadow: 0px 4px 18px 0px rgba(29, 29, 33, 1);
+    box-shadow: 0px 7px 21px var(--box-shadow-cl);
 }
 
 .hrr {
@@ -328,7 +328,7 @@ section#home {
     border: none;
     margin: 0px 5px;
     font-size: 23pt;
-    color: red;
+    color: #B00D0D;
     outline: none;
     cursor: pointer;
 }
@@ -411,7 +411,7 @@ footer {
 
 .socials a i {
     font-size: 28pt;
-    color: rgb(0, 0, 0);
+    color: var(--social-i-cl);
     opacity: 0.9;
     border-radius: 50%;
     transition: all .4s ease-in-out;

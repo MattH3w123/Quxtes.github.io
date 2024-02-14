@@ -1,28 +1,33 @@
-
 document.addEventListener("DOMContentLoaded", function() {
+  
   const body = document.querySelector('body');
-  const Changee = document.getElementById('change');
+  const changeButton = document.getElementById('change');
 
-  const colorchanger = () => {
+  function colorchanger() {
+    
     if (body.getAttribute('data-mode') === 'two') {
       body.setAttribute('data-mode', 'one');
+      localStorage.setItem('colorMode', 'one');
     } else {
       body.setAttribute('data-mode', 'two');
+      localStorage.setItem('colorMode', 'two');
     }
-  };
+  }
 
-  Changee.addEventListener('click', colorchanger);
+  if (changeButton) {
+    changeButton.addEventListener('click', colorchanger);
+  } else {
+    console.log("Change button not found");
+  }
+
+  const savedColorMode = localStorage.getItem('colorMode');
+  
+  if (savedColorMode) {
+    body.setAttribute('data-mode', savedColorMode);
+  } else {
+    console.log("No saved color mode found");
+  }
 });
-
-function changeColor(button) {
-    
-    if (button.classList.contains("red-heart")) {
-      button.classList.remove("red-heart");
-    } else {
-      button.classList.add("red-heart");
-    }
-};
-
 
 let SeeMore = document.querySelector("#quote-see-more");
 let quotebox = 3;
