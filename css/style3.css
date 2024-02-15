@@ -148,7 +148,7 @@ nav ul li a:hover {
     height: 70px;
     display: flex;
     align-items: center;
-    padding: 5px;
+    margin: 5px 0px;
     cursor: pointer;
     opacity: .7;
     transition: .3s ease-in-out;
