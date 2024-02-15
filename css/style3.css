@@ -59,6 +59,42 @@ body {
     height: 100vh;
 }
 
+.hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+@media(prefers-reduced-motion) {
+    .hidden {
+        transition: none;
+    }
+}
+
+.hidden-fast {
+    opacity: 0;
+    transition: all 1s;
+    filter: blur(2px);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden-fast {
+        transition: none;
+    }
+}
+
+.show-fast {
+    opacity: 1;
+    filter: blur(0);
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
 header {
     display: flex;
     align-items: center;
@@ -144,12 +180,13 @@ section#baner {
     margin-top: 70px;
     height: 390px;
     width: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6)), url(../img/landscape3.jpg);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url(../img/library-1866844_1920.jpg);
     box-shadow: 0px 0px 23px 8px rgba(0, 0, 0, 0.5);
     border-bottom-left-radius: 30%;
     border-bottom-right-radius: 30%;
+    background-attachment: fixed;
     background-position: center;
-    background-position-y: 55%;
+    /*background-position-y: 55%;*/
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -504,7 +541,7 @@ footer {
 
     .container header .logo img {
         width: auto;
-        height: 60px;
+        height: 50px;
     }
 
     .container #baner {
@@ -526,7 +563,7 @@ footer {
 
     .container header {
         margin: 0;
-        padding: 10px 0px 10px 0px;
+        padding: 10px 0px;
     }
 
     .container header nav ul li a{
@@ -537,7 +574,7 @@ footer {
 
     .container header .logo img {
         width: auto;
-        height: 60px;
+        height: 50px;
     }
 
     .container #baner {
@@ -588,5 +625,263 @@ footer {
 
     .container footer .copyright p {
         font-size: 15pt;
+    }
+}
+
+@media (max-width: 410px) {
+
+    .container header {
+        margin: 0;
+        padding: 0px 10px;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .container header .logo img {
+        height: 50px;
+    }
+
+    .container header nav ul li a{
+        font-size: 15pt;
+        width: fit-content;
+        padding: 0px 10px;
+    }
+
+    .container #baner {
+        height: 190px;
+    }
+
+    .container #baner .b-name {
+        font-size: 24pt;
+    } 
+
+    .container #home {
+        padding: 50px 0px 20px 0px;
+    }
+
+    .container #home .qt-content-area {
+        width: 90%;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2 {
+        font-size: 19pt;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2:hover {
+        opacity: 1;
+    }
+
+    .container #home .qt-content-area .qt-content {
+        grid-template-columns: 1fr;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-main-content .quote-text {
+        font-size: 17pt;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-artist {
+        font-size: 16pt;
+    }
+
+    .container footer {
+        padding: 30px 10px 15px 10px;
+    }
+
+    .container footer .socials a i {
+        font-size: 24pt;
+    }
+
+    .container footer .navigation-f ul li {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container footer .navigation-f {
+        margin: 20px 0px 0px 0px;
+    }
+
+    .container footer .navigation-f ul li a {
+       margin: 10px 15px 10px 15px;
+       font-size: 16pt;
+    }
+
+    .container footer .copyright p {
+        font-size: 15pt;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 410px) {
+
+    .container header {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .container header .logo img {
+        height: 50px;
+    }
+
+    .container header nav ul li a{
+        font-size: 15pt;
+        width: fit-content;
+        padding: 0px 7px;
+    }
+
+    .container #baner {
+        height: 190px;
+    }
+
+    .container #baner .b-name {
+        font-size: 24pt;
+    } 
+
+    .container #home {
+        padding: 50px 0px 20px 0px;
+    }
+
+    .container #home .qt-content-area {
+        width: 90%;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2 {
+        font-size: 19pt;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2:hover {
+        opacity: 1;
+    }
+
+    .container #home .qt-content-area .qt-content {
+        grid-template-columns: 1fr;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-main-content .quote-text {
+        font-size: 17pt;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-artist {
+        font-size: 16pt;
+    }
+
+    .container footer {
+        padding: 30px 10px 15px 10px;
+    }
+
+    .container footer .socials a i {
+        font-size: 24pt;
+    }
+
+    .container footer .navigation-f ul li {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container footer .navigation-f {
+        margin: 20px 0px 0px 0px;
+    }
+
+    .container footer .navigation-f ul li a {
+       margin: 10px 15px 10px 15px;
+       font-size: 16pt;
+    }
+
+    .container footer .copyright p {
+        font-size: 15pt;
+        padding-top: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .container header {
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .container header .logo img {
+        height: 50px;
+        display: none;
+    }
+
+    .container header nav ul li a{
+        font-size: 15pt;
+        width: fit-content;
+        padding: 0px 10px;
+    }
+
+    .container #baner {
+        height: 170px;
+    }
+
+    .container #baner .b-name {
+        font-size: 22pt;
+    } 
+
+    .container #home {
+        padding: 50px 0px 20px 0px;
+    }
+
+    .container #home .qt-content-area {
+        width: 99%;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2 {
+        font-size: 19pt;
+    }
+
+    .container #home .qt-content-area .quote-see-more h2:hover {
+        opacity: 1;
+    }
+
+    .container #home .qt-content-area .qt-content {
+        grid-template-columns: 1fr;
+    }
+
+    .container #home .qt-content-area .qt-content .qot {
+        padding: 10px;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content {
+        width: 97%;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-main-content .quote-text {
+        font-size: 17pt;
+    }
+
+    .container #home .qt-content-area .qt-content .quote-text-content .quote-artist {
+        font-size: 16pt;
+    }
+
+    .container footer {
+        padding: 30px 10px 15px 10px;
+    }
+
+    .container footer .socials a i {
+        font-size: 24pt;
+    }
+
+    .container footer .navigation-f ul li {
+        display: flex;
+        justify-content: center;
+    }
+
+    .container footer .navigation-f {
+        margin: 20px 0px 0px 0px;
+    }
+
+    .container footer .navigation-f ul li a {
+       margin: 10px 15px 10px 15px;
+       font-size: 16pt;
+    }
+
+    .container footer .copyright p {
+        font-size: 15pt;
+        padding-top: 10px;
     }
 }
